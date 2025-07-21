@@ -33,4 +33,11 @@ describe("Order unit tests", () => {
     total = order2.total();
     expect(total).toBe(600);
   });
+
+  it("should throw error if the item qte is less or equal zero 0", () => {
+    expect(() => {
+      const item = new OrderItem("i1", "Item 1", 100, "p1", 0);
+      const order = new Order("o1", "c1", [item]);
+    }).toThrow("Quantity must be greater than 0");
+  });
 });
